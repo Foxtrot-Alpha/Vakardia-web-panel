@@ -44,10 +44,5 @@
       </div>
     </div>
   </div>
-  <script>
-    function openConfig(){
-      window.location.replace("edit.html");
-    }
-  </script>
 </body>
 </html>
