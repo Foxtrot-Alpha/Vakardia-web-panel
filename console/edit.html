@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier les identifiants Rcon</title>
+    <script type="text/javascript" src="static/js/jquery-1.12.0.min.js"></script>
+    <style>
+        body{
+            background-color: #1c1c1c;
+        }
+        #box{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            height: 450px;
+            width: min(100%, 550px);
+            background: linear-gradient(115deg, #057747, #a423ef);
+        }
+        .content{
+            width: 100%;
+            text-align: center;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 16px;
+            color: black;
+            margin-top: 20px;
+        }
+        .textbox{
+            color: white;
+            text-align: center;
+            margin: 1.2em;
+            width: 60%;
+            border-bottom: 3px solid rgba(255,255,255,0.25);
+            transition: border-bottom-color ease 0.8s;
+            margin-left:20%;
+            margin-right: 20%;
+        }
+        .textbox:focus-within{
+        border-bottom-color: rgba(255,255,255,0.8)
+        }
+        .textbox input::placeholder{
+        color: white;
+        text-align: center;
+        font-family: 'Cabin', sans-serif;
+        }
+        .textbox input[type = "text"], .textbox input[type = "password"], .textbox input[type="number"]{
+            background: rgba(0,0,0,0);
+            border: none;
+            color: white;
+            font-family: 'PT Sans', sans-serif;
+            font-size: 20px;
+            width: 85%;
+            margin-top: 25px;
+        }
+        .buttonbox{
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .buttonbox input{
+            background: white;
+            height: 35px;
+            width: 200px;
+            border:none;
+        }
+        .buttonbox input:hover{
+            cursor: pointer;
+            background: #20d820;
+            color: white;
+        }
+        .buttonbox input:disabled{
+            background: red;
+            color: white;
+        }
+        p{
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <form name="config" class="content" id="conf-form" method="post" action="editConfig.php" enctype="multipart/form-data">
+            <div class="textbox">
+                <input type="text" name="host" placeholder="Adresse IP">
+            </div>
+            <div class="textbox">
+                <input type="number" name="port" placeholder="Port">
+            </div>
+            <div class="textbox">
+                <input type="password" name="pwd" placeholder="Mot de passe RCON">
+            </div>
+            <div class="buttonbox">
+                <input class="validate" id="val-button" type="submit" name ="log-button" value="Valider" disabled="disabled">
+            </div>
+        </form>
+    </div>
+    <p id="henlo">BONNES VACANCES FLORANT</p>
+</body>
+<script>
+    (function() {
+        $('form > div > input').keyup(function() {
+
+            var empty = false;
+            $('form > div > input').each(function() {
+                if ($(this).val() == '') {
+                    empty = true;
+                }
+            });
+
+            if (empty) {
+                $('#val-button').attr('disabled', 'disabled');
+            } else {
+                $('#val-button').removeAttr('disabled'); 
+            }
+        });
+    })()
+    
+    function flashtext(ele,col) {
+        var tmpColCheck = document.getElementById( ele ).style.color;
+
+        if (tmpColCheck === 'silver') {
+            document.getElementById( ele ).style.color = col;
+        } else {
+            document.getElementById( ele ).style.color = 'silver';
+        }
+    } 
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    setInterval(function() {
+        flashtext('henlo', getRandomColor());
+    }, 150 );
+</script>
+</html>
