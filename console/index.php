@@ -40,7 +40,6 @@
         <div class="input-group-btn">
           <button type="button" class="btn btn-primary" id="btnSend"><span class="glyphicon glyphicon-send"></span><span class="hidden-xs"> Envoyer</span></button>
           <button type="button" class="btn btn-warning" id="btnClearLog"><span class="glyphicon glyphicon-erase"></span><span class="hidden-xs"> Nettoyer</span></button>
-          <button type="button" class="btn btn-info" id="btnEditConfig" onclick="openConfig()"><span class="glyphicon glyphicon-edit"></span><span class="hidden-xs"> Paramètres</span></button>
         </div>
       </div>
     </div>
