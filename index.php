@@ -20,7 +20,7 @@ if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
 <nav class="navbar" role="navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="<?php echo $main_url ?>">
-            <img src="resources/logo.webp" width="64" height="64">
+            <img src="resources/logo.webp" width="128" height="85">
         </a>
         <a role="button" class="navbar-burger" data-target="navbarMain">
             <span aria-hidden="true"></span>
@@ -52,5 +52,23 @@ if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
         </div>
     </div>
 </nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+        if ($navbarBurgers.length > 0) {
+            $navbarBurgers.forEach( el => {
+                el.addEventListener('click', () => {
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+                });
+            });
+        }
+    });
+</script>
 </body>
 </html>
