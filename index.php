@@ -14,10 +14,10 @@ if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenue sur Vakardia</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/darkly/bulmaswatch.min.css">
 </head>
 <body>
-<nav class="navbar" role="navigation">
+<nav class="navbar is-success" role="navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="<?php echo $main_url ?>">
             <img src="resources/logo.webp">
