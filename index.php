@@ -20,7 +20,7 @@ if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
 <nav class="navbar" role="navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="<?php echo $main_url ?>">
-            <img src="resources/logo.webp" width="128" height="85">
+            <img src="resources/logo.webp">
         </a>
         <a role="button" class="navbar-burger" data-target="navbarMain">
             <span aria-hidden="true"></span>
