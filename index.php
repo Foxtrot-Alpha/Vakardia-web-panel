@@ -39,7 +39,7 @@ if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
     </style>
 </head>
 <body class="has-navbar-fixed-top">
-<nav class="navbar is-success is-fixed-top" role="navigation">
+<nav class="navbar is-success is-fixed-top has-shadow" role="navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="<?php echo $main_url ?>">
             <img src="resources/logo.webp">
