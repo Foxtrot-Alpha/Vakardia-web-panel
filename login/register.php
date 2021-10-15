@@ -49,10 +49,13 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             </div>
             <div class="field">
                 <label class="label">Mot de passe</label>
-                <div class="control has-icons-left">
-                    <input class="input is-danger" type="password" placeholder="Le mot de passe de ton choix">
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-danger" id="pwdInput" type="input" placeholder="Le mot de passe de ton choix">
                     <span class="icon is-small is-left">
                         <i class="fas fa-key"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-times"></i>
                     </span>
                     <p class="help is-warning">Ton mot de passe doit contenir au moins 8 caractères composés de lettres, numéros, et symboles</p>
                 </div>
@@ -77,15 +80,49 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
         </form>
     </div>
     <script>
-        const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+        const mailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         const mail = document.querySelector('#mailInput');
+        const mailValidityIcon = mail.parentNode.querySelector(".fa-times");
+
+        const pwdRegex = new RegExp("^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*\"\'\(\)§\{\}°µ£´`,?;\.:\/=+~])(?=.{8,})");
+        const pwd = document.querySelector('#pwdInput');
+        const pwdValidityIcon = pwd.parentNode.querySelector('.fa-times');
+
         mail.addEventListener('keyup', checkMail);
+        pwd.addEventListener('keyup', checkPassword);
 
         function checkMail(e) {
-            var valid = regex.test(mail.value);
+            var valid = mailRegex.test(mail.value);
             if(valid){
-                
+                mail.classList.remove("is-danger");
+                mail.classList.add("is-success");
+            }else{
+                mail.classList.add("is-danger");
+                mail.classList.remove("is-success");
+            }
+            switchValidityIcon(mailValidityIcon, valid);
+        }
+        
+        function checkPassword(e) {
+            var valid = pwdRegex.test(pwd.value);
+            console.log("Value: "+pwd.value+" Valid: "+valid);
+            if(valid){
+                pwd.classList.remove("is-danger");
+                pwd.classList.add("is-success");
+            }else{
+                pwd.classList.add("is-danger");
+                pwd.classList.remove("is-success")
+            }
+            switchValidityIcon(pwdValidityIcon, valid);
+        }
+
+        function switchValidityIcon(element, isValid){
+            if(isValid){
+                element.classList.remove('fa-times');
+                element.classList.add('fa-check');
+            }else{
+                element.classList.add('fa-times');
+                element.classList.remove('fa-check');
             }
         }
     </script>
