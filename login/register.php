@@ -88,41 +88,37 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
         const pwd = document.querySelector('#pwdInput');
         const pwdValidityIcon = pwd.parentNode.querySelector('.fa-times');
 
+        const confirmPwd = document.querySelector('#confirmPwd');
+        const confirmValidityIcon = confirmPwd.parentNode.querySelector('.fa-times');
+
         mail.addEventListener('keyup', checkMail);
         pwd.addEventListener('keyup', checkPassword);
+        confirmPwd.addEventListener('keyup', validPassword)
 
         function checkMail(e) {
-            var valid = mailRegex.test(mail.value);
-            if(valid){
-                mail.classList.remove("is-danger");
-                mail.classList.add("is-success");
-            }else{
-                mail.classList.add("is-danger");
-                mail.classList.remove("is-success");
-            }
-            switchValidityIcon(mailValidityIcon, valid);
+            switchValidityUI(mail, mailValidityIcon, mailRegex.test(mail.value));
         }
         
         function checkPassword(e) {
-            var valid = pwdRegex.test(pwd.value);
-            console.log("Value: "+pwd.value+" Valid: "+valid);
-            if(valid){
-                pwd.classList.remove("is-danger");
-                pwd.classList.add("is-success");
-            }else{
-                pwd.classList.add("is-danger");
-                pwd.classList.remove("is-success")
-            }
-            switchValidityIcon(pwdValidityIcon, valid);
+            validPassword();
+            switchValidityUI(pwd, pwdValidityIcon, pwdRegex.test(pwd.value));
         }
 
-        function switchValidityIcon(element, isValid){
+        function validPassword(e){
+            switchValidityUI(confirmPwd, confirmValidityIcon, pwd.value == confirmPwd.value);
+        }
+
+        function switchValidityUI(inputElement, iconElement, isValid){
             if(isValid){
-                element.classList.remove('fa-times');
-                element.classList.add('fa-check');
+                iconElement.classList.remove('fa-times');
+                iconElement.classList.add('fa-check');
+                inputElement.classList.remove("is-danger");
+                inputElement.classList.add("is-success");
             }else{
-                element.classList.add('fa-times');
-                element.classList.remove('fa-check');
+                iconElement.classList.add('fa-times');
+                iconElement.classList.remove('fa-check');
+                inputElement.classList.add("is-danger");
+                inputElement.classList.remove("is-success");
             }
         }
     </script>
