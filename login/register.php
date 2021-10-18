@@ -24,7 +24,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
 </head>
 <body>
     <div class="columns is-mobile is-centered">
-        <form class="box">
+        <form class="box" action="/addAccount.php">
             <div class="field">
                 <label class="label">Pseudo</label>
                 <div class="control has-icons-left">
@@ -38,7 +38,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             <div class="field">
                 <label class="label">Adresse Mail</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" id="mailInput" placeholder="Ton adresse mail" pattern='[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}'>
+                    <input class="input is-danger" id="mailInput" placeholder="Ton adresse mail">
                     <span class="icon is-small is-left">
                         <i class="fas fa-at"></i>
                     </span>
@@ -50,7 +50,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             <div class="field">
                 <label class="label">Mot de passe</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" id="pwdInput" type="input" placeholder="Le mot de passe de ton choix">
+                    <input class="input is-danger" id="pwdInput" type="password" placeholder="Le mot de passe de ton choix">
                     <span class="icon is-small is-left">
                         <i class="fas fa-key"></i>
                     </span>
@@ -72,9 +72,12 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
                     </span>
                 </div>
             </div>
-            <div class="field">
+            <div class="field is-grouped is-grouped-centered">
                 <div class="control">
-                    <button class="button is-link">Valider</button>
+                    <input type="submit" class="button is-link" value="Valider"></input>
+                </div>
+                <div class="control">
+                    <button type="button" class="button is-outlined is-danger" onclick="gotoHome();">Annuler</button>
                 </div>
             </div>
         </form>
@@ -120,6 +123,10 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
                 inputElement.classList.add("is-danger");
                 inputElement.classList.remove("is-success");
             }
+        }
+
+        function gotoHome(){
+            window.location.replace("../index.php");
         }
     </script>
 </body>
