@@ -105,7 +105,6 @@ if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
                 });
             });
         }
-        console.log('dropdown size: ' + $dropdowns.length);
         if ($dropdowns.length > 0) {
             $dropdowns.forEach(function ($el) {
                 $el.addEventListener('click', function (event) {
