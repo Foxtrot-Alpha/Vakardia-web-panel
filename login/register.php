@@ -23,6 +23,16 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
     </style>
 </head>
 <body>
+    <?php if(isset($_GET['error'])&& !empty($_GET['error'])){
+        if($_GET['error'] == "emptyArgs"){
+            echo "<div class=\"notification is-danger\">\n\t\t<button class=\"delete\"></button>\n\t\tMerci de remplir les champs requis!\n\t</div>";
+        }else if(str_starts_with($_GET['error'], 'bad') && strlen($_GET['error']) >5){
+            $text = "Merci de créer un compte avec ". (str_contains($_GET['error'], 'Mail') ? ('une adresse mail ' . (str_contains($_GET['error'], 'Pwd') ? 'et un mot de passe ': '')): 'un mot de passe ') . 'valide!';
+            echo "<div class=\"notification is-danger\">\n\t\t<button class=\"delete\"></button>\n\t\t{$text}\n\t</div>";
+        }
+    }
+    ?>
+    
     <div class="columns is-mobile is-centered">
         <form class="box" action="addAccount.php" method="post">
             <div class="field">
@@ -128,6 +138,16 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
         function gotoHome(){
             window.location.replace("../index.php");
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+                const $notification = $delete.parentNode;
+
+                $delete.addEventListener('click', () => {
+                    $notification.parentNode.removeChild($notification);
+                });
+            });
+        });
     </script>
 </body>
 </html>
