@@ -48,7 +48,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             <div class="field">
                 <label class="label">Adresse Mail</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" id="mailInput" name="mail" placeholder="Ton adresse mail">
+                    <input class="input is-danger" id="mailInput" name="mail" placeholder="Ton adresse mail" required>
                     <span class="icon is-small is-left">
                         <i class="fas fa-at"></i>
                     </span>
@@ -60,7 +60,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             <div class="field">
                 <label class="label">Mot de passe</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" id="pwdInput" type="password" name="password" placeholder="Le mot de passe de ton choix">
+                    <input class="input is-danger" id="pwdInput" type="password" name="password" placeholder="Le mot de passe de ton choix" required>
                     <span class="icon is-small is-left">
                         <i class="fas fa-key"></i>
                     </span>
@@ -73,7 +73,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             <div class="field">
                 <label class="label">Confirmation du mot de passe</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" id="confirmPwd" type="password" placeholder="Réécrit ton mot de passe">
+                    <input class="input is-danger" id="confirmPwd" type="password" placeholder="Réécrit ton mot de passe" required>
                     <span class="icon is-small is-left">
                         <i class="fas fa-key"></i>
                     </span>
