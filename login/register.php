@@ -24,11 +24,11 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
 </head>
 <body>
     <div class="columns is-mobile is-centered">
-        <form class="box" action="/addAccount.php">
+        <form class="box" action="addAccount.php" method="post">
             <div class="field">
                 <label class="label">Pseudo</label>
                 <div class="control has-icons-left">
-                    <input class="input" type="text" placeholder="Le pseudo qui sera utilisé sur ce site.">
+                    <input class="input" type="text" name="username" placeholder="Le pseudo qui sera utilisé sur ce site.">
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
                     </span>
@@ -38,7 +38,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             <div class="field">
                 <label class="label">Adresse Mail</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" id="mailInput" placeholder="Ton adresse mail">
+                    <input class="input is-danger" id="mailInput" name="mail" placeholder="Ton adresse mail">
                     <span class="icon is-small is-left">
                         <i class="fas fa-at"></i>
                     </span>
@@ -50,7 +50,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             <div class="field">
                 <label class="label">Mot de passe</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" id="pwdInput" type="password" placeholder="Le mot de passe de ton choix">
+                    <input class="input is-danger" id="pwdInput" type="password" name="password" placeholder="Le mot de passe de ton choix">
                     <span class="icon is-small is-left">
                         <i class="fas fa-key"></i>
                     </span>
