@@ -24,6 +24,9 @@ session_start();
                         <strong><?php echo $_SESSION['username']; ?></strong>
                         <br>
                         Bravo pour ton inscription! Il te suffit d'attendre qu'un administrateur du projet te donne accès au site pour commencer à t'en servir!
+                        <br>
+                        Id: <?php echo $_SESSION['id']; ?>
+                        <span class="help is-primary">Note cet ID, l'administrateur pourrait te le demander.</span>
                     </p>
                 </div>
                 <div class="level">
