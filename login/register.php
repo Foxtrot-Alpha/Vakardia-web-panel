@@ -37,6 +37,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
     
     <div class="columns is-mobile is-centered">
         <form class="box" action="addAccount.php" method="post">
+        <h1 class="title has-text-centered">S'inscrire</h1>
             <div class="field">
                 <label class="label">Pseudo</label>
                 <div class="control has-icons-left">
