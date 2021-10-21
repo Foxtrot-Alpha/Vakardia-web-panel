@@ -71,7 +71,7 @@ $pwd = $useCookies ? $_COOKIE['rememberPwd'] : '';
                     </label>
                 </div>
             </div>
-            <div class="field is-grouped is-grouped-centered">
+            <div class="field is-grouped is-grouped-centered buttons">
                 <div class="control">
                     <input type="submit" class="button is-success" value="Se connecter"></input>
                 </div>
