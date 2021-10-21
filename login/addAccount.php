@@ -25,18 +25,18 @@ if(strlen($error)> 3){
 }else{
     $username= empty($_POST['username']) ? explode("@", $mail)[0] : $_POST['username'];
     $finalPwd = $hashPwd($pwd, $mail);
-    echo "Passed form verif\n";
     //Vérifier si l'adresse mail est déjà présente
-    if(!mysqli_query($db, "SELECT id FROM users WHERE use_email='$mail'")){
-        echo "Unused mail\n";
-        if($result = mysqli_query($db, "INSERT INTO users (use_email, use_username, use_password) VALUES ('$mail', '$username', '$pwd')")){
-            echo "INSERT successful";
+    $results = mysqli_query($db, "SELECT use_username FROM users WHERE use_email='$mail'");
+    if($results && $results->num_rows === 0){
+        if(mysqli_query($db, "INSERT INTO users (use_email, use_username, use_password, use_avatar) VALUES ('$mail', '$username', '$finalPwd', '/resources/users/default.png')")){
+            $_SESSION['id'] = mysqli_insert_id($db);
             $_SESSION['mail'] = $mail;
             $_SESSION['username'] = $username;
-            $_SESSION['avatar'] = '/resources/users/default.png'; 
+            $_SESSION['avatar'] = '/resources/users/default.png';
             header('Location: success.php');
+            exit();
+            
         }
-        echo "Value of errors: ". $db->errno . "Content: ". $db->error;
 
     }else{
         header('Location: register.php?error=usedMail');
