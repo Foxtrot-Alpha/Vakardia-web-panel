@@ -24,6 +24,10 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             $_SESSION['avatar'] = $row['use_avatar'];
             $_SESSION['id'] = $row['use_id'];
             mysqli_free_result($results);
+            if(isset($_POST['remember'])){
+                setcookie('rememberMail', $mail, time() + (86400 * 365));
+                setcookie('rememberPwd', $_POST['password'], time() + (86400 * 365));
+            }
             header('Location: success.php');
             exit();
         }else{

@@ -4,6 +4,10 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
     header('Location: /index.php');
     exit();
 }
+//Check for Remember me cookies
+$useCookies = (isset($_COOKIE['rememberMail']) && isset($_COOKIE['rememberPwd']));
+$mail = $useCookies ? $_COOKIE['rememberMail'] : '';
+$pwd = $useCookies ? $_COOKIE['rememberPwd'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,7 +42,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             <div class="field">
                 <label class="label">Adresse Mail</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" id="mailInput" name="mail" placeholder="Ton adresse mail" required>
+                    <input class="input is-danger" id="mailInput" name="mail" placeholder="Ton adresse mail" required value="<?php echo $mail; ?>">
                     <span class="icon is-small is-left">
                         <i class="fas fa-at"></i>
                     </span>
@@ -50,7 +54,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             <div class="field">
                 <label class="label">Mot de passe</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" id="pwdInput" type="password" name="password" placeholder="Ton mot de passe" required>
+                    <input class="input is-danger" id="pwdInput" type="password" name="password" placeholder="Ton mot de passe" required value="<?php echo $pwd; ?>">
                     <span class="icon is-small is-left">
                         <i class="fas fa-key"></i>
                     </span>
@@ -62,7 +66,7 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             <div class="field is-grouped-centered is-grouped">
                 <div class="control">
                     <label class="checkbox">
-                        <input type="checkbox" name="remember">
+                        <input type="checkbox" name="remember" value="yes" <?php if($useCookies) echo "checked"; ?>>
                         Se souvenir de moi
                     </label>
                 </div>
