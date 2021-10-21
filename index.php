@@ -1,8 +1,6 @@
 <?php
 $main_url = "#";
 session_start();
-$_SESSION['id'] = 4; #Temporary
-$_SESSION['username'] = "afhistos"; #Temporary
 if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
     header('Status: 401	Unauthorized', false, 401);
     header('Location: login/index.php');
