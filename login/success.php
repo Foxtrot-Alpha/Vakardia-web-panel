@@ -23,10 +23,12 @@ session_start();
                     <p>
                         <strong><?php echo $_SESSION['username']; ?></strong>
                         <br>
-                        Bravo pour ton inscription! Il te suffit d'attendre qu'un administrateur du projet te donne accès au site pour commencer à t'en servir!
+                        <?php if(isset($_GET['type']) && $_GET['type'] == "inscription")echo "Bravo pour ton inscription! Il te suffit d'attendre qu'un administrateur du projet te donne accès au site pour commencer à t'en servir!";
+                        else echo 'Tu es bien connecté!';?>
+                        
                         <br>
                         Id: <?php echo $_SESSION['id']; ?>
-                        <span class="help is-primary">Note cet ID, l'administrateur pourrait te le demander.</span>
+                        <?php if(isset($_GET['type']) && $_GET['type'] == "inscription") echo '<span class="help is-primary">Note cet ID, l\'administrateur pourrait te le demander.</span>'; ?>
                     </p>
                 </div>
                 <div class="level">

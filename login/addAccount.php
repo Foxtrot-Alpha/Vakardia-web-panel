@@ -33,7 +33,8 @@ if(strlen($error)> 3){
             $_SESSION['mail'] = $mail;
             $_SESSION['username'] = $username;
             $_SESSION['avatar'] = '/resources/users/default.png';
-            header('Location: success.php');
+            mysqli_free_result($results);
+            header('Location: success.php?type=inscription');
             exit();
             
         }
