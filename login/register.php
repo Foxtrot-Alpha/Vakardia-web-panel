@@ -29,6 +29,8 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
         }else if(str_starts_with($_GET['error'], 'bad') && strlen($_GET['error']) >5){
             $text = "Merci de créer un compte avec ". (str_contains($_GET['error'], 'Mail') ? ('une adresse mail ' . (str_contains($_GET['error'], 'Pwd') ? 'et un mot de passe ': '')): 'un mot de passe ') . 'valide!';
             echo "<div class=\"notification is-danger\">\n\t\t<button class=\"delete\"></button>\n\t\t{$text}\n\t</div>";
+        }else if($_GET['error'] == "usedMail"){
+            echo "<div class=\"notification is-danger\">\n\t\t<button class=\"delete\"></button>\n\t\tCette adresse mail est déjà utilisée sur ce site ! <a href=\"index.php\">Se connecter</a>\n\t</div>"; 
         }
     }
     ?>
