@@ -23,7 +23,7 @@ if(strlen($error)> 3){
     header("Location: register.php?error={$error}");
     exit();
 }else{
-    $username= empty($_POST['username']) ? explode("@", $mail)[0] : $_POST['username'];
+    $username= substr(empty($_POST['username']) ? explode("@", $mail)[0] : $_POST['username'], 0, 32);
     $finalPwd = $hashPwd($pwd, $mail);
     //Vérifier si l'adresse mail est déjà présente
     $results = mysqli_query($db, "SELECT use_username FROM users WHERE use_email='$mail'");

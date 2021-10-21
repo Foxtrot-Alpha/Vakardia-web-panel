@@ -41,11 +41,12 @@ if(isset($_SESSION['id']) && !empty($_SESSION['id'])){
             <div class="field">
                 <label class="label">Pseudo</label>
                 <div class="control has-icons-left">
-                    <input class="input" type="text" name="username" placeholder="Le pseudo qui sera utilisé sur ce site.">
+                    <input class="input" type="text" name="username" maxlength="32" placeholder="Le pseudo qui sera utilisé sur ce site.">
                     <span class="icon is-small is-left">
                         <i class="fas fa-user"></i>
                     </span>
-                    <p class="help is-info">Si laissé vide, le nom de ton adresse mail sera utilisé</p>
+                    <p class="help is-info">Si laissé vide, le nom de ton adresse mail sera utilisé<br>
+                    Longueur maximale: 32 caractères</p>
                 </div>
             </div>
             <div class="field">
