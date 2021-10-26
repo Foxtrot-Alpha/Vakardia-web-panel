@@ -119,11 +119,11 @@ $pwd = $useCookies ? $_COOKIE['rememberPwd'] : '';
         }
 
         function gotoHome(){
-            window.location.replace("../index.php");
+            window.location.replace("/index.php");
         }
 
         function gotoRegister(){
-            window.location.replace("/register.php");
+            window.location.replace("register.php");
         }
 
         document.addEventListener('DOMContentLoaded', () => {
