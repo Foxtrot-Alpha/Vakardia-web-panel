@@ -134,6 +134,8 @@ $pwd = $useCookies ? $_COOKIE['rememberPwd'] : '';
                     $notification.parentNode.removeChild($notification);
                 });
             });
+            checkMail();
+            checkPassword();
         });
     </script>
 </body>
