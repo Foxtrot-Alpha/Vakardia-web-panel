@@ -1,0 +1,11 @@
+.is-selected{
+    background-color: rgba(0,0,0,0.25);
+}
+
+.navbar .navbar-menu .navbar-start .navbar-item.is-selected:hover{
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar .navbar-menu .navbar-start .navbar-dropdown .navbar-item:hover{
+    background-color: rgba(0,0,0,0.15);
+}

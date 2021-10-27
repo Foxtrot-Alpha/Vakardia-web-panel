@@ -15,6 +15,7 @@ if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenue sur Vakardia</title>
     <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/darkly/bulmaswatch.min.css">
+    <link rel="stylesheet" href="global.css">
     <style>
         #outer{
             width: 100%;
