@@ -51,7 +51,7 @@ if(!isset($_SESSION['id']) || empty($_SESSION['id'])){
     </div>
     <div id="navbarMain" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item" href="index.php">Accueil</a>
+            <a class="navbar-item is-selected" href="index.php">Accueil</a>
             <a class="navbar-item" href="/console/index.php">Console</a>
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link" onclick="toggleDropdown();">Statistiques</a>
