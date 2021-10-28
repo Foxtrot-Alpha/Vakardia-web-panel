@@ -705,7 +705,7 @@ function logMsg(msg, sep, cls){
         ("0" + date.getDate()).slice(-2) + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + date.getFullYear() + " @ " +
         ("0" + date.getHours()).slice(-2) + ":" + ("0" + date.getMinutes()).slice(-2) + ":" + ("0" + date.getSeconds()).slice(-2);
   $("#groupConsole")
-    .append("<li class=\"list-group-item list-group-item-" + cls + "\"><span class=\"pull-right label label-" + cls + "\">" + datetime + "</span><strong>" + sep + "</strong> " + msg + "<div class=\"clearfix\"></div></li>");
+    .append("<li class=\"panel-block is" + cls + "\"><span class=\"tag is-" + cls + "\">" + datetime + "</span><strong>" + sep + "</strong> " + msg + "<div class=\"is-clearfix\"></div></li>");
   $("#btnSend").prop("disabled", false);
   // Clear old logs
   var logItemSize = $("#groupConsole li").size();
@@ -714,7 +714,7 @@ function logMsg(msg, sep, cls){
   }
   // Scroll down
   if($("#chkAutoScroll").is(":checked")){
-    $("#consoleContent .panel-body").scrollTop($("#groupConsole").get(0).scrollHeight);
+    $("#consoleContent .message-body").scrollTop($("#groupConsole").get(0).scrollHeight);
   }
 }
 function logSuccess(log){
@@ -732,7 +732,7 @@ function logDanger(log){
 
 function alertMsg(msg, cls){
   $("#alertMessage").fadeOut("slow", function(){
-    $("#alertMessage").attr("class", "alert alert-"+cls);
+    $("#alertMessage").attr("class", "notification is-"+cls);
     $("#alertMessage").html(msg);
     $("#alertMessage").fadeIn("slow", function(){});
   });
@@ -752,7 +752,7 @@ function alertDanger(msg){
 
 function sendCommand(command){
   if (command == "") {
-    alertDanger("Command missing.");
+    alertDanger("Command manquante.");
     return;
   }
   logMsg(command, ">", "success");
@@ -761,7 +761,7 @@ function sendCommand(command){
       if(json.status){
         if(json.status == 'success' && json.response && json.command){
           if(json.response.indexOf("Unknown command") != -1){
-            alertDanger("Unknown command : " + json.command); 
+            alertDanger("Commande inconnue : " + json.command); 
             logDanger(json.response);
           }
           else if(json.response.indexOf("Usage") != -1){
